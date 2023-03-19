@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { QueryClientProvider } from "react-query";
 
-function App() {
+const fetchRouteNames = () => {
+  return fetch('http://localhost:8000')
+    .then(res => res.json());
+}
+
+const fetchRoute = (route) => {
+
+}
+
+
+const App = () => {
+  const [route, setRoute] = useState(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+    <QueryClientProvider>
+      <select onChange={event => {
+        setRoute(event.target.value);
+      }}>
+        {routes}
+      </select>
+      {route && <div>
+        <h3>Дни: {route.days}</h3>
+        <h3>Оставшиеся ресурсы: {route.resources}</h3>
+        <h3>Ресурсы, расходуемые в текущий момент: {route.resources}</h3>
+        <h3>Распределение мощности реактора: {route.resources}</h3>
+        <h3>Характеристика автоклава и популяция: {route.resources}</h3>
+      </div>}
+    </QueryClientProvider>
   );
 }
 
