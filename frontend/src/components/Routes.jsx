@@ -53,7 +53,7 @@ const Routes = () => {
         <ul>
           {route.points.map((point, i) =>
             <li key={i}>
-              {i}: {point.resources}
+              {i}: {point.dis} {point.sh}
             </li>
           )}
         </ul>
