@@ -2,8 +2,8 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from django.forms.models import model_to_dict
 from rest_framework.views import APIView
-from .models import *
-from .models import *
+from ....Predprof2.backend.serverAPI.models import *
+from ....Predprof2.backend.serverAPI.models import *
 
 # Create your views here.
 
@@ -11,7 +11,7 @@ class AddGetDataView(APIView):
     def get(self, request):
         ans = []
         for route in Route.objects.all():
-            ans.append({'points' : [model_to_dict(point, ['dis', 'sh']) for point in route.point_set.all()]})
+            ans.append({'points' : [model_to_dict(point, ['dis', 'sh']) for point in route.point_set.all()], 'id' : route.id})
         return Response(ans)
     
     def post(self, request):
