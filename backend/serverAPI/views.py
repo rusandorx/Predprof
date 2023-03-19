@@ -2,8 +2,8 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from django.forms.models import model_to_dict
 from rest_framework.views import APIView
-from ....Predprof2.backend.serverAPI.models import *
-from ....Predprof2.backend.serverAPI.models import *
+
+from serverAPI.models import Point, Route
 
 # Create your views here.
 
