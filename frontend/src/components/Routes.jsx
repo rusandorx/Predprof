@@ -18,7 +18,8 @@ const Routes = () => {
     e.preventDefault();
     if (!route) return;
     route.points.splice(submitData.pointNumber, 0, { dis: parseInt(submitData.distance), sh: parseInt(submitData.plantsNumber) });
-    fetch('http://localhost:8000/AddGetRoutes', {
+    console.log(JSON.stringify(routes));
+    fetch('http://localhost:8000/AddGetRoutes/', {
       method: 'POST',
       body: JSON.stringify(routes),
       headers: {
